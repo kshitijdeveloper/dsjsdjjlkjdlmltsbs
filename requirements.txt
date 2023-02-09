@@ -17,7 +17,7 @@ TgCrypto
 tenacity==8.0.1
 urllib3==1.26.5
 wget==3.2
-yt-dlp==2023.1.6
+yt-dlp
 lxml
 cloudscraper
 bs4
