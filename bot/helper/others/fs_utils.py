@@ -150,7 +150,7 @@ def take_ss(video_file):
 
 def clean_download(path: str):
     if ospath.exists(path):
-        LOGGER.info(f"Cleaning unwanted files/folders: {path}")
+        LOGGER.info(f"Cleaning Download: {path}")
         try:
             rmtree(path)
         except:
