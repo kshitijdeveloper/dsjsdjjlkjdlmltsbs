@@ -6,46 +6,6 @@ from os import remove as osremove, path as ospath, mkdir, walk, listdir, rmdir, 
 from bot.helper.others.exceptions import NotSupportedExtractionArchive
 from bot import TG_SPLIT_SIZE, EQUAL_SPLITS, STORAGE_THRESHOLD, IS_PREMIUM_USER
 
-
-junedkh
-/
-jmdkh-mltb
-Public template
-Code
-Issues
-4
-Pull requests
-Actions
-Projects
-Security
-Insights
-jmdkh-mltb/bot/helper/ext_utils/fs_utils.py
-@junedkh
-junedkh Ability to zip/unzip multi links in same directory. Mostly helpful in…
-…
- 1 contributor
-292 lines (258 sloc)  10.6 KB
-from math import ceil
-from os import listdir, makedirs, mkdir
-from os import path as ospath
-from os import remove as osremove
-from os import rmdir, walk
-from re import I
-from re import split as re_split
-from shutil import disk_usage, rmtree
-from subprocess import Popen, check_output
-from subprocess import run as srun
-from sys import exit as sysexit
-from time import time
-
-from magic import Magic
-from PIL import Image
-
-from bot import (DOWNLOAD_DIR, LOGGER, MAX_SPLIT_SIZE, app, aria2, config_dict,
-                 get_client, user_data)
-from bot.helper.ext_utils.exceptions import NotSupportedExtractionArchive
-from bot.helper.ext_utils.telegraph_helper import telegraph
-
 ARCH_EXT = [".tar.bz2", ".tar.gz", ".bz2", ".gz", ".tar.xz", ".tar", ".tbz2", ".tgz", ".lzma2",
             ".zip", ".7z", ".z", ".rar", ".iso", ".wim", ".cab", ".apm", ".arj", ".chm",
             ".cpio", ".cramfs", ".deb", ".dmg", ".fat", ".hfs", ".lzh", ".lzma", ".mbr",
