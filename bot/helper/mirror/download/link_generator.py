@@ -1,27 +1,12 @@
-from bot import (
-    UNIFIED_EMAIL,
-    UNIFIED_PASS,
-    GDTOT_CRYPT,
-    HUBDRIVE_CRYPT,
-    KATDRIVE_CRYPT,
-    DRIVEFIRE_CRYPT,
-    XSRF_TOKEN,
-    laravel_session,
-    SHAREDRIVE_PHPCKS
-)
-from bot.helper.others.bot_utils import *
-from bot.helper.others.exceptions import DirectDownloadLinkException
-import re
-import os
-from time import sleep
-
-import base64
-import cloudscraper
-from lxml import etree
-from urllib.parse import urlparse, parse_qs
-from bs4 import BeautifulSoup
-from playwright.sync_api import Playwright, sync_playwright, expect
-import requests
+# Copyright (C) 2019 The Raphielscape Company LLC.
+#
+# Licensed under the Raphielscape Public License, Version 1.c (the "License");
+# you may not use this file except in compliance with the License.
+#
+""" Helper Module containing various sites direct links generators. This module is copied and modified as per need
+from https://github.com/AvinashReddy3108/PaperplaneExtended . I hereby take no credit of the following code other
+than the modifications. See https://github.com/AvinashReddy3108/PaperplaneExtended/commits/master/userbot/modules/direct_links.py
+for original authorship. """
 
 fmed_list = ['fembed.net', 'fembed.com', 'femax20.com', 'fcdn.stream', 'feurl.com', 'layarkacaxxi.icu',
              'naniplay.nanime.in', 'naniplay.nanime.biz', 'naniplay.com', 'mm9842.com']
@@ -84,7 +69,7 @@ def direct_link_generator(link: str):
         return fembed(link)
     elif any(x in domain for x in ['sbembed.com', 'watchsb.com', 'streamsb.net', 'sbplay.org']):
         return sbembed(link)
-    elif is_Sharerlink(link):
+    elif is_share_link(link):
         if 'gdtot' in domain:
             return gdtot(link)
         elif 'filepress' in domain:
